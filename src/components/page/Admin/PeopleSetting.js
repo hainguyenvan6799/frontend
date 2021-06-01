@@ -1,6 +1,4 @@
 import React from "react";
-import { useState } from "react/cjs/react.development";
-
 import { private_key_chatroom, chat_projectid } from "../security";
 
 // import context
@@ -13,9 +11,9 @@ var axios = require("axios");
 
 function PeopleSetting(props) {
   const [isEditUser, setIsEditUser] = React.useState(null);
-  const [users_not_attend, setUsersNotAttend] = useState([]);
-  const [searchResult, setSearchResult] = useState([]);
-  const [imageUser, setImageUser] = useState({});
+  const [users_not_attend, setUsersNotAttend] = React.useState([]);
+  const [searchResult, setSearchResult] = React.useState([]);
+  const [imageUser, setImageUser] = React.useState({});
   const classname = props.chat.title;
   const person = props.chat.people;
 
