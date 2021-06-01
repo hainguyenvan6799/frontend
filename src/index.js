@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 import Store from './Store';
 
-axios.defaults.baseURL = "http://127.0.0.1:8000";
+axios.defaults.baseURL = "https://backend-lienlactructuyen.herokuapp.com";
 axios.defaults.headers.common['Authorization'] = localStorage.getItem('token');
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
