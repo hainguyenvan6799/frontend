@@ -95,6 +95,10 @@ function Login() {
             }
             setLoading(false)
         }
+        else {
+            alert(response.data.message);
+            window.location.href = "/signin";
+    }
     }
 
     const onSubmit = async (values) => {
