@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import { ViewState, EditingState, IntegratedEditing, } from '@devexpress/dx-react-scheduler';
 import ClipLoader from "react-spinners/ClipLoader";
 
@@ -257,7 +257,7 @@ export default () => {
       ) : null} */}
       <a href="/">Quay về Trang chủ</a>
       
-      <Paper>
+//       <Paper>
         <Scheduler
           data={data}
         >
@@ -306,7 +306,7 @@ export default () => {
             readOnly={isBeingCreated ? false : !allowUpdating}
           />
         </Scheduler>
-      </Paper>
+//       </Paper>
     </React.Fragment>
   
     )
