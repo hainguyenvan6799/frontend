@@ -19,7 +19,6 @@ import QuanLyLopHoc from "./components/page/GiaoVien/QuanLyLopHoc";
 
 import ThamGiaPhongChat from "./components/page/Admin/ThamGiaPhongChat";
 import PhongChat from "./components/page/User/PhongChat";
-import ScheduleCalendar from "./components/page/GiaoVien/ScheduleCalendar";
 import AdminOnly from "./components/page/Admin/AdminOnly";
 import PhanQuyen from "./components/page/Admin/PhanQuyen";
 import VaiTro from "./components/page/Admin/QuanLyVaiTro";
@@ -109,7 +108,7 @@ function App() {
 
         {/* Giảng viên */}
         {/* Admin */}
-        <Route path="/schedule-calendar" component={ScheduleCalendar} />
+        
         <Route path="/DSSV" component={DSSV} />
         <Route path="/themdiendan" component={ThemDienDan} />
         <Route path="/quanlylophoc" component={QuanLyLopHoc} />
