@@ -97,7 +97,7 @@ function Login() {
         }
         else {
             alert(response.data.message);
-//             window.location.href = "/signin";
+            window.location.href = "/signin";
     }
     }
 
