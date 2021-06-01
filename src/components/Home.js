@@ -18,7 +18,7 @@ function Home() {
             <div className="theme-slider">
                 <div id="home-page-carousel" className="carousel slide" data-ride="carousel">
                     <div className="carousel-inner" role="listbox">
-                        <div className="carousel-item  active" style={{ backgroundImage: 'url(img/banner.JPG)' }}>
+                        <div className="carousel-item  active" style={{ backgroundImage: 'url(img/banner.jpg)' }}>
                             <div className=" carousel-overlay-content container-fluid">
                                 <div className="content-wrap">
                                     <h2>Hệ Thống Liên Lạc Trực Tuyến - IUH</h2><br />
