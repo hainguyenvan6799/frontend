@@ -13,39 +13,46 @@ function FilesManagement(props) {
 
     return (
         <div className="row">
-        {props.files ?
-            props.files.length !== 0 ?
-                
-                    <div className="col-md-6">
-                        <h2>Thực hiện hiển thị danh sách file, đường dẫn file</h2>
-                        
-                            <table className="table table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>STT</th>
-                                        <th>Download</th>
-                                        <th>Hành động</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
+      {props.files ? (
+        props.files.length !== 0 ? (
+          <div className="col-md-6">
+            <h2>Thực hiện hiển thị danh sách file, đường dẫn file</h2>
 
-                                        props.files.map((file, index) => {
-                                            return (
-                                                <FileDetail {...props} key={index} file={file} index={index} delete={deletefile} />
-                                            )
-                                        })
-                                    }
-                                </tbody>
-                            </table> 
-            
-                    </div> : <div className='col-md-6'><h5>Hiện tại người dùng chưa có tệp nào</h5> : <h5>Hiện tại người dùng chưa có tệp nào</h5></div>}
+            <table className="table table-striped">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Download</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+                {props.files.map((file, index) => {
+                  return (
+                    <FileDetail
+                      {...props}
+                      key={index}
+                      file={file}
+                      index={index}
+                      delete={deletefile}
+                    />
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <h5>Hiện tại người dùng chưa có tệp nào</h5>
+        )
+      ) : (
+        <h5>...Loading...</h5>
+      )}
 
-                    <div className="col-md-6">
-                        <h2 className="text-center">Tải tệp riêng tư lên tại đây</h2>
-                        <ImportFileAws {...props} handleUpload={handleUpload} />
-                    </div>
-                </div> 
+      <div className="col-md-6">
+        <h2 className="text-center">Tải tệp riêng tư lên tại đây</h2>
+        <ImportFileAws {...props} handleUpload={handleUpload} />
+      </div>
+    </div>
     )
 }
 
