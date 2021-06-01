@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import { makeStyles } from '@material-ui/core/styles';
 import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -165,7 +165,7 @@ export default () => {
     return (
         <React.StrictMode>
         <React.Fragment>
-            <Paper>
+//             <Paper>
                 <EditingOptionsSelector
                     options={editingOptions}
                     onOptionsChange={handleEditingOptionsChange}
@@ -209,7 +209,7 @@ export default () => {
                         readOnly={ isAppointmentBeingCreated ? false : !allowUpdating}
                     />
                 </Scheduler>
-            </Paper>
+//             </Paper>
         </React.Fragment>
         </React.StrictMode>
     );
