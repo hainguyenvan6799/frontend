@@ -225,7 +225,7 @@ function Header() {
           <nav className="navbar navbar-light bg-faded">
             <a href="/" className="navbar-brand has-logo">
               <span className="logo">
-                <img src="/img/logo.PNG" alt="E-IUH" />
+                <img src="/img/logo.png" alt="E-IUH" />
               </span>
             </a>
             <div
