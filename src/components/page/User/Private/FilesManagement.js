@@ -12,9 +12,10 @@ function FilesManagement(props) {
     }
 
     return (
-        props.files ?
+        <div className="row">
+        {props.files ?
             props.files.length !== 0 ?
-                <div className="row">
+                
                     <div className="col-md-6">
                         <h2>Thực hiện hiển thị danh sách file, đường dẫn file</h2>
                         
@@ -38,13 +39,13 @@ function FilesManagement(props) {
                                 </tbody>
                             </table> 
             
-                    </div>
+                    </div> : <div className='col-md-6'><h5>Hiện tại người dùng chưa có tệp nào</h5> : <h5>Hiện tại người dùng chưa có tệp nào</h5></div>}
 
                     <div className="col-md-6">
                         <h2 className="text-center">Tải tệp riêng tư lên tại đây</h2>
                         <ImportFileAws {...props} handleUpload={handleUpload} />
                     </div>
-                </div> : <h5>Hiện tại người dùng chưa có tệp nào</h5> : <h5>Hiện tại người dùng chưa có tệp nào</h5>
+                </div> 
     )
 }
 
