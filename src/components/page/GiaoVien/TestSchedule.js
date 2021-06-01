@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
+// import Paper from '@material-ui/core/Paper';
 import { ViewState, EditingState, IntegratedEditing, } from '@devexpress/dx-react-scheduler';
 
 import ClipLoader from "react-spinners/ClipLoader";
@@ -163,7 +163,7 @@ function TestSchedule(props) {
             <div>
 
                 <React.Fragment>
-                    <Paper>
+//                     <Paper>
                         <Scheduler
                             data={data}
                         >
@@ -212,7 +212,7 @@ function TestSchedule(props) {
                                 readOnly={isBeingCreated ? false : !allowUpdating}
                             />
                         </Scheduler>
-                    </Paper>
+//                     </Paper>
                 </React.Fragment>
 
             </div>
