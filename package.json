@@ -2,6 +2,10 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "npm": "5.7.1",
+    "node": "9.5.0"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "@devexpress/dx-react-core": "^2.7.5",
