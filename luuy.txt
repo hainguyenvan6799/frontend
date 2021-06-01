@@ -1,0 +1,40 @@
+lưu ý khi chuyển file từ html sang reactjs
++ Chúng ta cần chú ý đến các elements br, img, input
+
+npm install @ant-design/icons
+npm i --legacy-peer-deps react-chat-engine
+
+bảo mật
+npm install crypto-js
+npm i react-script --save
+npm cache clean --force
+
+cách tạo ra encoded REACT_APP_Chatroom_API trong file env
+var CryptoJS = require("crypto-js");
+
+var ciphertext = CryptoJS.AES.encrypt('Thu123456', '62294469-da47-4cc9-ab51-13e6da7fe0d6').toString();
+chuỗi 62294469-da47-4cc9-ab51-13e6da7fe0d6 là project secret key trong chatengine.io
+Lưu ý: mỗi lần sửa file .env cần phải npm start lại project mới có hiệu lực
+
+'X-Requested-With': 'XMLHttpRequest': hiển thị header dưới dạng mặc định
+var config = {
+            method: 'put',
+            url: `https://api.chatengine.io/chats/${props.chat.id}/people/\n`,
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Project-ID': '477b0d7b-ba54-4eb3-a0e9-ef565e560592',
+                'User-Name': 'hainguyenvan6799.webdev@gmail.com',
+                'User-Secret': 'Thu123456',
+                'Content-Type': 'application/json',
+            },
+            data: data
+        };
+( thực hiện ở PeopleSetting dòng 91)
+
+npm install file-system --save cài đặt để upload file
+
+npm install react-slick --save
+
+Question: React does not recognize the `computedMatch` prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase `computedmatch` instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+Solution: You are getting this warning because of the way you have placed your <Switch> tag. Keep only <Route/> and <Redirect/> tags within the<Switch> tags to get rid of the warning.
+npm install react-file-viewer
