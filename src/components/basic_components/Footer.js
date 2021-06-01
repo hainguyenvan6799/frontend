@@ -12,7 +12,7 @@ function Footer() {
                                 <div className="col-md-5">
                                     <div className="infoarea">
                                         <div className="footer-logo">
-                                            <a href="/"><img src="img/logo.PNG" width={100} height={100} alt="Academi" /></a>
+                                            <a href="/"><img src="img/logo." width={100} height={100} alt="Academi" /></a>
                                         </div>
                                         <p>Chào mừng các bạn đến với Hệ thống liên lạc trực tuyến của trường Đại học Công
                   nghiệp TP.HCM, kênh liên lạc trực tuyến của nhà trường cho giảng viên và sinh viên.<br /></p>
