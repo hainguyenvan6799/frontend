@@ -4,6 +4,7 @@ import { userContext } from '../../../../Store';
 import DanhSachDienDan from './DanhSachDienDan';
 import { mahoadulieu_postform } from '../../security';
 import ClipLoader from "react-spinners/ClipLoader";
+import { channel1 } from "../../../../Store";
 
 function DienDan(props) {
     const [topics, setTopics] = React.useState([]);
@@ -12,6 +13,7 @@ function DienDan(props) {
     
     const [user, setUser] = React.useContext(userContext);
     const [allUsers, setAllUsers] = React.useState([]);
+    const [notification, setNotification] = React.useState([]);
     var isMounted = true;
 
     console.log(props.isCreateTopicResource)
@@ -135,9 +137,12 @@ function DienDan(props) {
             setLoading(false)
         }
     }, [])
-
-
-    console.log(topics)
+    
+    React.useEffect(() => {
+    channel1.bind("App\\Events\\Notification", (data) => {
+      setNotification((noti) => [...noti, data.data]);
+    });
+  }, []);
 
     return (
 
@@ -145,6 +150,7 @@ function DienDan(props) {
             props.isCreateTopicResource !== null ? props.isCreateTopicResource === true ?
             <div>
                 <DanhSachDienDan
+                    notification={notification}
                     topics={topics}
                     topicsPending={topicsPending}
                     userlogin={user}
