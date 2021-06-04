@@ -18,6 +18,7 @@ function DanhSachBinhLuan(props) {
         machude,
       };
       const response = await axios.post("/api/xem-binh-luan", data);
+      console.log(response);
       if (response.data.status) {
         const users = response.data.users;
         if (isMounted) {
@@ -36,32 +37,37 @@ function DanhSachBinhLuan(props) {
     };
   }, []);
 
-  console.log("comments", comments);
-      
-        return (
-          <table>
-              <thead>
-                <tr>
-                    <th>Tên</th>
-                    <th>Nội dung</th>
-                    <th>File(nếu có)</th>
-                </tr>
-              </thead>
-              <tbody>
-                {
-                    comments.map((item, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{item.username}</td>
-                                <td>{item.noidungbinhluan}</td>
-                                <td>URL file nếu có</td>
-                            </tr>
-                        )
-                    })
-                }
-              </tbody>
-          </table>
-        );
+  return (
+    <table className="table table-striped">
+      <thead>
+        <tr>
+          <th>Tên</th>
+          <th>Nội dung</th>
+          <th>File(nếu có)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {comments.map((item) => {
+          return (
+            <tr key={item._id}>
+              <td>{item.username}</td>
+              <td>{item.noidungbinhluan}</td>
+              <td>
+                {item.urls.map((url) => {
+                  return (
+                    <>
+                      <a href={url.fileurl}>{url.filename}</a>
+                      <br />
+                    </>
+                  );
+                })}
+              </td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  );
 }
 
 export default DanhSachBinhLuan;
