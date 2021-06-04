@@ -12,7 +12,7 @@ function ThemBinhLuan(props) {
   const [files, setFiles] = React.useState([]);
   const [noidung, setNoiDung] = React.useState("");
 
-  const onChangeFile = (e) => {
+  const handleChange = (e) => {
     setFiles(e.target.files);
   };
 
@@ -23,15 +23,13 @@ function ThemBinhLuan(props) {
     formdata.append("noidung", noidung);
     formdata.append("mauser", userlogin.mauser);
     formdata.append("machude", machude);
-    // if (files.length > 0) {
-    //   for (let i = 0; i < files.length; i++) {
-    //     formdata.append("files[" + i + "]", files[i]);
-    //   }
-    // }
+    if (files.length > 0) {
+      for (let i = 0; i < files.length; i++) {
+        formdata.append("files[" + i + "]", files[i]);
+      }
+    }
 
     const response = await axios.post("/api/tao-binh-luan", formdata);
-    console.log(response);
-    // props.handleCreate(formdata, active);
   };
 
   const form_them_diendan = () => {
@@ -52,20 +50,14 @@ function ThemBinhLuan(props) {
           </div>
         </div>
 
-        {/* <div className="form-group row">
+        <div className="form-group row">
           <label htmlFor="file" className="col-sm-2 col-form-label">
             Chọn file
           </label>
           <div className="col-sm-10">
-            <input
-              type="file"
-              name="file"
-              id="file"
-              onChange={onChangeFile}
-              multiple
-            />
+            <input type="file" name="file" multiple onChange={handleChange} />
           </div>
-        </div> */}
+        </div>
 
         <button type="submit" className="btn btn-primary btn-block mt-3">
           Thêm bình luận
