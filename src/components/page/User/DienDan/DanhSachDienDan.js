@@ -5,6 +5,8 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import ThemDienDan from "./ThemDienDan";
 import ChinhSuaDienDan from "./ChinhSuaDienDan";
 import ChiTietChuDe from "./ChiTietChuDe";
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 
 function DanhSachDienDan(props) {
   const { accessRights, userlogin } = props;
@@ -47,6 +49,47 @@ function DanhSachDienDan(props) {
                 <Link className="nav-link" to={{ pathname: `/forum` }}>
                   Thêm chủ đề
                 </Link>
+              </li>
+<li className="nav-item">
+                <Popup
+                  trigger={
+                    <button className="button">
+                      Xem thông báo
+                      {props.notification.length ? (
+                        <span>
+                          <div
+                            style={{
+                              width: "40px",
+                              height: "40px",
+                              borderRadius: "50%",
+                              backgroundColor: "red",
+                              paddingTop: "8px",
+                              float: "right",
+                              marginTop: "-50px",
+                              marginRight: "-25px",
+                            }}
+                          >
+                            New
+                          </div>
+                        </span>
+                      ) : null}
+                    </button>
+                  }
+                  modal
+                >
+                  <span>
+                    {props.notification.length > 0
+                      ? props.notification.map((item) => {
+                          return (
+                            <p>
+                              {item.username} có 1 bình luận trên{" "}
+                              {item.tenchude}
+                            </p>
+                          );
+                        })
+                      : "Không có thông báo mới."}
+                  </span>
+                </Popup>
               </li>
             </ul>
           </div>
