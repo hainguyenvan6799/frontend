@@ -7,14 +7,18 @@ function ImportFileAws(props) {
     console.log(user);
     const [files, setFiles] = React.useState({})
     const onChangeFile = (e) => {
-        setFiles(e.target.files[0]);
+        setFiles(e.target.files);
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         
         const formdata = new FormData();
-        formdata.append('file', files);
+        if (files.length > 0) {
+          for (let i = 0; i < files.length; i++) {
+            formdata.append("files[" + i + "]", files[i]);
+          }
+        }
         formdata.append('email', user.email)
         formdata.append('mauser', user.mauser)
         formdata.append('folder_name', user.mauser + '_privatefiles/');
@@ -24,7 +28,7 @@ function ImportFileAws(props) {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="file" onChange={onChangeFile} />
+            <input type="file" onChange={onChangeFile} multiple />
             <button className="btn btn-primary">Submit</button>
         </form>
     )
