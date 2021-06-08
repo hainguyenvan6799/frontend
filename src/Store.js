@@ -10,6 +10,9 @@ const pusherFrontend = new Pusher("2b03e0ab05c69b7c59b7", {
 });
 export const channel = pusherFrontend.subscribe("contain_files");
 export const channel1 = pusherFrontend.subscribe("notification");
+export const channel2 = pusherFrontend.subscribe("topics");
+export const channel3 = pusherFrontend.subscribe("scheduleCalendar");
+
 channel.bind("pusher:subscription_succeeded", function (members) {});
 channel.bind("add_files", function (data) {
   alert(data);
