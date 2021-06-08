@@ -82,7 +82,7 @@ function TaiLieu(props) {
   React.useEffect(() => {
     channel.bind("App\\Events\\MyEvent", (data) => {
       console.log("pusher", data);
-
+    if (data.data.resource_id === `tl_${props.userlogin.malop}`) {
       if (data.data.isDelete) {
         if (data.data.active) {
           //   const newData = tailieu.filter((item) => item._id !== data.data._id);
@@ -127,6 +127,7 @@ function TaiLieu(props) {
           tailieu.filter((item) => item._id !== data.data._id)
         );
       }
+    }
     });
   }, []);
 
