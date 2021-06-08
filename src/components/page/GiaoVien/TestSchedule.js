@@ -29,6 +29,7 @@ import axios from 'axios';
 import { userContext } from '../../../Store'
 import Header from '../../basic_components/Header';
 import Footer from '../../basic_components/Footer';
+import { channel3 } from "../../../Store";
 
 function TestSchedule(props) {
 
@@ -101,23 +102,53 @@ function TestSchedule(props) {
         setAddedAppointment(addedAppointment);
         setIsBeingCreated(true)
     }
+    
+    React.useEffect(() => {
+    channel3.bind("App\\Events\\ScheduleCalendarEvent", (data) => {
+      console.log("pusher", data);
+      if (data.data.magiaovien === user.magiaovien) {
+        if (data.data.isAdd) {
+          const { allDay, id, title, startDate, endDate } = data.data;
+          setData((schedule) => [
+            ...schedule,
+            { allDay, id, title, startDate, endDate },
+          ]);
+          setIsBeingCreated(false);
+        }
+
+        if (data.data.isUpdate) {
+          const { allDay, id, title, startDate, endDate } = data.data;
+          setData((schedule) =>
+            schedule.map((item) =>
+              item.id === id ? { allDay, id, title, startDate, endDate } : item
+            )
+          );
+        }
+
+        if (data.data.isDelete) {
+          const { id } = data.data;
+          setData((schedule) => schedule.filter((item) => item.id !== id));
+        }
+      }
+    });
+  }, []);
 
     const onCommitChanges = (props) => {
         const { added, changed, deleted } = props;
         if (added) {
             const appointmentLength = data.length;
             const new_data_added = { ...added, id: appointmentLength + 1 };
-            setData((data) => [...data, new_data_added]);
-            setIsBeingCreated(false);
+//             setData((data) => [...data, new_data_added]);
+//             setIsBeingCreated(false);
 
             axios.post('/api/add-appointment', { ...new_data_added, magiaovien: user.mauser }).then(res => console.log(res)).catch(err => console.log(err))
         }
         if (changed) {
-            const new_data = data.map((appointment) => (changed[appointment.id] ?
-                { ...appointment, ...changed[appointment.id] } : appointment
-            )
-            )
-            setData(new_data);
+//             const new_data = data.map((appointment) => (changed[appointment.id] ?
+//                 { ...appointment, ...changed[appointment.id] } : appointment
+//             )
+//             )
+//             setData(new_data);
 
             data.map((appointment) => {
                 if (changed[appointment.id]) {
@@ -127,8 +158,8 @@ function TestSchedule(props) {
             })
         }
         if (deleted) {
-            const new_data = data.filter(item => item.id !== deleted)
-            setData(new_data)
+//             const new_data = data.filter(item => item.id !== deleted)
+//             setData(new_data)
             axios.post('/api/delete-appointment', { id: deleted, magiaovien: user.mauser }).then(res => console.log(res)).catch(err => console.log(err))
         }
         setIsBeingCreated(false);
