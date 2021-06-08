@@ -37,31 +37,37 @@ function ThemDienDan(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append('mota', mota)
-    formdata.append('noidung', noidung);
-    formdata.append('mauser', mahoadulieu_postform(userlogin.mauser));
-    formdata.append('resource_id', mahoadulieu_postform(`chude_${userlogin.malop}`))
-    // if(files.length > 0)
-    // {
-    //     for (let i = 0; i < files.length; i++) {
-    //         formdata.append('files[' + i + ']', files[i]);
-    //     }
-    // }
+    if(mota === "" || noidung === "") {
+      alert("Mô tả hoặc nội dung không được để trống."); 
+    }
+    else {
+      const formdata = new FormData();
+      formdata.append('mota', mota)
+      formdata.append('noidung', noidung);
+      formdata.append('mauser', mahoadulieu_postform(userlogin.mauser));
+      formdata.append('resource_id', mahoadulieu_postform(`chude_${userlogin.malop}`))
+      // if(files.length > 0)
+      // {
+      //     for (let i = 0; i < files.length; i++) {
+      //         formdata.append('files[' + i + ']', files[i]);
+      //     }
+      // }
+
+
+      let active = null;
+      if(userlogin.group === "gv")
+      {
+          active = true;
+      }
+      else
+      {
+          active = false;
+      }
+      formdata.append('active', active);
+
+      props.handleCreate(formdata, active);
+    }
     
-
-    let active = null;
-    if(userlogin.group === "gv")
-    {
-        active = true;
-    }
-    else
-    {
-        active = false;
-    }
-    formdata.append('active', active);
-
-    props.handleCreate(formdata, active);
   };
 
   const form_them_diendan = () => {
