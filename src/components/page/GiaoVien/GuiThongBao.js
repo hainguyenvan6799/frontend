@@ -26,7 +26,7 @@ function GuiThongBao(props) {
             malop: props.user.malop,
         }
         const response = await axios.post('/api/gui-thong-bao', data);
-        console.log(response);
+        alert("Gửi thông báo thành công.");
     }
 
     const formik = useFormik({
