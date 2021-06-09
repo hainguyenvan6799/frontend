@@ -102,7 +102,7 @@ function Header() {
                                             </span>
                                 </Link> */}
 
-              {user.magiaovien !== null ? (
+              {user.magiaovien !== null && user.group !== "admin" ? (
                 user.group !== "" ? (
                   user.group === "gv" ? (
                     <div>
