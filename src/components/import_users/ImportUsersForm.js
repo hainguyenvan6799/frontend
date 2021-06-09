@@ -70,7 +70,7 @@ export default class ImportUsersForm extends Component {
                                 axios.post("/api/update-user-chat-id-using-email", {
                                     email: username,
                                     'user_chat_id': res.data.id,
-                                }).then(res => console.log(res)).catch(error => console.log(error))
+                                }).then(res => alert("Thêm người dùng thành công")).catch(error => console.log(error))
                             }
                         }).catch(err => console.log(err));
 
