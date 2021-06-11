@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 // import adddictional components
-import { ChatEngine, PeopleSettings } from "react-chat-engine";
+import { ChatEngine } from "react-chat-engine";
 import PeopleSetting from "./PeopleSetting";
 
 import {
@@ -106,10 +106,7 @@ function ThamGiaPhongChat(props) {
             userName={email_decoded}
             userSecret={password_decoded}
             renderPeopleSettings={(creds, chat) => {
-              if (chat) {
-                  console.log(chat);
-                  if (chat.admin.username !== user.email) {
-                    return (
+              return (
                       <PeopleSetting
                         creds={creds}
                         chat={chat}
@@ -119,10 +116,6 @@ function ThamGiaPhongChat(props) {
                         password={password_decoded}
                       />
                     );
-                  } else {
-                    return <PeopleSettings />;
-                  }
-                }
             }}
           />
         ) : (
